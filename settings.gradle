@@ -1,6 +1,3 @@
 rootProject.name = 'jangteo'
 
 include 'jangteo-api'
-include 'jangteo-common'
-include 'jangteo-core'
-include 'jangteo-data'
