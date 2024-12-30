@@ -1,13 +1,13 @@
-package com.flab.jangteo;
+package com.flab.jangteoapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JangteoApplicationTests {
+class JangteoApiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
