@@ -8,19 +8,8 @@ out/
 .gradle/
 build/
 !gradle-wrapper.jar
-.gradle/cache/
-.gradle/daemon/
-.gradle/workspace/
-.gradle/buildOutputCleanup/
 !gradlew
 !gradlew.bat
-
-# Maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-log/
 
 # Spring Boot
 logs/
