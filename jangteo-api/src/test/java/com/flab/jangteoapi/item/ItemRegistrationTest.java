@@ -47,7 +47,7 @@ public class ItemRegistrationTest {
     }
 
     @Test
-    @DisplayName("아이템 이름이 누락될 경우, 에러를 리턴합니다.")
+    @DisplayName("물품 이름이 누락될 경우, 에러를 리턴합니다.")
     public void shouldFailWhenItemNameIsMissing() throws Exception {
 
         ItemSaveRequest request = ItemSaveRequest.builder()

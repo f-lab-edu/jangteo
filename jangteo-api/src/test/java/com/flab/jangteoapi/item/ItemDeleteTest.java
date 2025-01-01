@@ -52,7 +52,7 @@ public class ItemDeleteTest {
     }
 
     @Test
-    @DisplayName("등록된 아이템을 정상적으로 삭제합니다.")
+    @DisplayName("등록된 물품을 정상적으로 삭제합니다.")
     public void shouldDeleteItemSuccessfully() throws Exception {
 
         mockMvc.perform(delete("/items/" + itemId))
@@ -60,7 +60,7 @@ public class ItemDeleteTest {
     }
 
     @Test
-    @DisplayName("존재하지 않는 아이템을 삭제 요청 시, 에러를 반환합니다.")
+    @DisplayName("존재하지 않는 물품을 삭제 요청 시, 에러를 반환합니다.")
     public void shouldFailWhenDeletingNonExistentItem() throws Exception {
 
         UUID nonExistItemId = UUID.randomUUID();

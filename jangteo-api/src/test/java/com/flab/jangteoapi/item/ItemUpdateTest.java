@@ -52,7 +52,7 @@ public class ItemUpdateTest {
     }
 
     @Test
-    @DisplayName("등록된 아이템을 정상적으로 수정합니다.")
+    @DisplayName("등록된 물품을 정상적으로 수정합니다.")
     public void shouldUpdateItemSuccessfully() throws Exception {
 
         ItemSaveRequest updateRequest = ItemSaveRequest.builder()
@@ -73,7 +73,7 @@ public class ItemUpdateTest {
     }
 
     @Test
-    @DisplayName("아이템 이름이 누락될 경우, 수정이 실패합니다.")
+    @DisplayName("물품 이름이 누락될 경우, 수정이 실패합니다.")
     public void shouldFailWhenItemNameIsMissing() throws Exception {
 
         ItemSaveRequest invalidRequest = ItemSaveRequest.builder()
