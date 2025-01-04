@@ -1,4 +1,4 @@
-package com.flab.jangteoapi.auction;
+package com.flab.jangteoapi.auction.manage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flab.jangteoapi.auction.dto.AuctionSaveRequest;
@@ -31,7 +31,7 @@ public class AuctionRegisterTest {
     void shouldReturnCreatedWhenAuctionIsRegistered() throws Exception {
 
         AuctionSaveRequest request = AuctionSaveRequest.builder()
-                .auctionTitle("아이폰 판매합니다.")
+                .auctionTitle("신규 아이폰을 판매합니다.")
                 .itemId(UUID.randomUUID())
                 .itemName("Apple iPhone 13")
                 .description("128GB")
