@@ -34,13 +34,15 @@ public class ItemService {
 
     public Item getItem(UUID itemId) {
 
-        return itemRepository.findById(itemId);
+        return itemRepository.findById(itemId)
+                .orElseThrow(() -> new ItemNotFoundException("물품이 존재하지 않습니다."));
     }
 
 
     public Item updateItem(UUID itemId, ItemSaveRequest request) {
 
-        Item existingItem = itemRepository.findById(itemId);
+        Item existingItem = itemRepository.findById(itemId)
+                .orElseThrow(() -> new ItemNotFoundException("물품이 존재하지 않습니다."));
 
         Item updatedItem = existingItem.toBuilder()
                 .itemName(request.getItemName() != null ? request.getItemName() : existingItem.getItemName())
@@ -58,7 +60,7 @@ public class ItemService {
     public void deleteItem(UUID itemId) {
 
         if (!itemRepository.existsById(itemId)) {
-            throw new ItemNotFoundException("아이템이 존재하지 않습니다.");
+            throw new ItemNotFoundException("물품이 존재하지 않습니다.");
         }
 
         itemRepository.deleteById(itemId);
