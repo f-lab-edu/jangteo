@@ -18,7 +18,7 @@ public class ItemRepository {
 
         itemDB.put(item.getItemId(), item);
 
-        return item;
+        return itemDB.get(item.getItemId());
     }
 
     public Optional<Item> findById(UUID itemId) {
