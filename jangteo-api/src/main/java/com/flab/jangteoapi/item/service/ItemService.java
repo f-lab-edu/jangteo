@@ -60,11 +60,11 @@ public class ItemService {
 
     public void deleteItem(UUID itemId) {
 
-        if (!itemRepository.existsById(itemId)) {
+        try {
+            itemRepository.deleteById(itemId);
+        } catch (EmptyResultDataAccessException e) {
             throw new ItemNotFoundException("물품이 존재하지 않습니다.");
         }
-
-        itemRepository.deleteById(itemId);
     }
 
     private <T> T resolveField(T newValue, Boolean deleteFlag, T existingValue) {
