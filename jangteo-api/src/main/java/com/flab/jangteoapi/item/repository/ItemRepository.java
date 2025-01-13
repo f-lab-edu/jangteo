@@ -3,15 +3,15 @@ package com.flab.jangteoapi.item.repository;
 import com.flab.jangteoapi.item.domain.Item;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class ItemRepository {
 
-    private final Map<UUID, Item> itemDB = new HashMap<>();
+    private final Map<UUID, Item> itemDB = new ConcurrentHashMap<>();
 
 
     public Item save(Item item) {
