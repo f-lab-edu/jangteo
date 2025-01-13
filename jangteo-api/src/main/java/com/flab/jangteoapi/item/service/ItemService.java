@@ -18,7 +18,6 @@ public class ItemService {
     public Item createItem(ItemSaveRequest request) {
 
         Item newItem = Item.builder()
-                .itemId(request.getItemId() != null ? request.getItemId() : UUID.randomUUID())
                 .itemName(request.getItemName())
                 .description(request.getDescription())
                 .category(request.getCategory())
