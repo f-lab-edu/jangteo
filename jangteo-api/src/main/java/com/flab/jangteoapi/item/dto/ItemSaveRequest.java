@@ -33,4 +33,19 @@ public class ItemSaveRequest {
     private String condition;
 
     private String status;
+
+    // 삭제 플래그용 필드
+    private Boolean deleteItemName;
+
+    private Boolean deleteDescription;
+
+    private Boolean deleteCategory;
+
+    private Boolean deleteImageUrl;
+
+    private Boolean deleteOriginalPrice;
+
+    private Boolean deleteCondition;
+
+    private Boolean deleteStatus;
 }

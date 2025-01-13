@@ -44,14 +44,15 @@ public class ItemService {
         Item existingItem = itemRepository.findById(itemId)
                 .orElseThrow(() -> new ItemNotFoundException("물품이 존재하지 않습니다."));
 
-        Item updatedItem = existingItem.toBuilder()
-                .itemName(request.getItemName() != null ? request.getItemName() : existingItem.getItemName())
-                .description(request.getDescription() != null ? request.getDescription() : existingItem.getDescription())
-                .category(request.getCategory() != null ? request.getCategory() : existingItem.getCategory())
-                .imageUrl(request.getImageUrl() != null ? request.getImageUrl() : existingItem.getImageUrl())
-                .originalPrice(request.getOriginalPrice() != null ? request.getOriginalPrice() : existingItem.getOriginalPrice())
-                .condition(request.getCondition() != null ? request.getCondition() : existingItem.getCondition())
-                .status(request.getStatus() != null ? request.getStatus() : existingItem.getStatus())
+        Item updatedItem = Item.builder()
+                .itemId(existingItem.getItemId())
+                .itemName(resolveField(request.getItemName(), request.getDeleteItemName(), existingItem.getItemName()))
+                .description(resolveField(request.getDescription(), request.getDeleteDescription(), existingItem.getDescription()))
+                .category(resolveField(request.getCategory(), request.getDeleteCategory(), existingItem.getCategory()))
+                .imageUrl(resolveField(request.getImageUrl(), request.getDeleteImageUrl(), existingItem.getImageUrl()))
+                .originalPrice(resolveField(request.getOriginalPrice(), request.getDeleteOriginalPrice(), existingItem.getOriginalPrice()))
+                .condition(resolveField(request.getCondition(), request.getDeleteCondition(), existingItem.getCondition()))
+                .status(resolveField(request.getStatus(), request.getDeleteStatus(), existingItem.getStatus()))
                 .build();
 
         return itemRepository.save(updatedItem);
@@ -64,5 +65,18 @@ public class ItemService {
         }
 
         itemRepository.deleteById(itemId);
+    }
+
+    private <T> T resolveField(T newValue, Boolean deleteFlag, T existingValue) {
+
+        if (deleteFlag) {
+            return null;
+        }
+
+        if (newValue != null) {
+            return newValue;
+        } else {
+            return existingValue;
+        }
     }
 }
