@@ -8,6 +8,7 @@ import com.flab.jangteoapi.auction.repository.AuctionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -80,5 +81,16 @@ public class AuctionService {
         return auctionRepository.findAll().stream()
                 .map(AuctionResponse::from)
                 .collect(Collectors.toList());
+    }
+
+    public boolean isAuctionActive(UUID auctionID) {
+
+        Auction auction = auctionRepository.findById(auctionID)
+                .orElseThrow(() -> new AuctionNotFoundException("해당 경매를 찾을 수 없습니다"));
+
+        LocalDateTime now = LocalDateTime.now();
+
+        return now.isAfter(auction.getStartTime())
+                && now.isBefore(auction.getEndTime());
     }
 }

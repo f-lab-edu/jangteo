@@ -25,7 +25,7 @@ public class BidRepository {
         return Optional.ofNullable(bidDB.get(bidId));
     }
 
-    public Optional<Bid> findByAuctionIdAndUserId(UUID auctionId, String userId) {
+    public Optional<Bid> findByAuctionIdAndUserId(UUID auctionId, UUID userId) {
 
         return bidDB.values().stream()
                 .filter(bid -> bid.getAuctionId().equals(auctionId)
