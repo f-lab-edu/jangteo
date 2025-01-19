@@ -33,7 +33,7 @@ public class BidController {
     }
 
     @GetMapping
-    public ResponseEntity<BiddingResponse> getBidDetails(@PathVariable UUID auctionId, @RequestParam String userId) {
+    public ResponseEntity<BiddingResponse> getBidDetails(@PathVariable UUID auctionId, @RequestParam UUID userId) {
 
         BiddingResponse response = bidService.getBidDetailHistory(auctionId, userId);
 
@@ -41,7 +41,7 @@ public class BidController {
     }
 
     @PostMapping("/cancel")
-    public ResponseEntity cancelBid(@PathVariable UUID auctionId, @RequestParam String userId) {
+    public ResponseEntity cancelBid(@PathVariable UUID auctionId, @RequestParam UUID userId) {
 
         bidService.cancelBid(auctionId, userId);
 
